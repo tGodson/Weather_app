@@ -1,33 +1,32 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="style.css" />
-
-    <title>Weather App</title>
-    
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Weather app</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <div class="app_wrap">
-        <header>
-            <input type="text" autocomplete="off" class="search-box"
-            placeholder="Search for a city..."/>
-        </header>
-        <main>
-            <section class="location">
-                <div class="city">Northampton, GB</div>
-                <div class="date">Sartuday 31 October 2020</div>
-            </section>
-            <div class="current">
-                <div class="temp">15<span>c</span></div>
-                <div class="weather">Sunny</div>
-                <div class="hi-low">13c / 16c</div>
-            </div>
-        </main>
-    </div>
-    <script src="index.js"></script>
+  <div class="app-wrap">
+    <header>
+      <input type="text" autocomplete="off" class="search-box" placeholder="Search for a city..." />
+    </header>
+    <main>
+      <section class="location">
+        <div class="city">Buea, CM</div>
+        <div class="date">Monday 2 November 2020</div>
+      </section>
+      <div class="current">
+        <div class="temp">23<span>°c</span></div>
+        <div class="weather">Clouds</div>
+        <div class="hi-low">
+          <button class="celsius">Celsius</button>
+          <button class="fahrenheit">Fahrenheit</button>
+        </div>
+      </div>
+    </main>
+  </div>
+  <script src="index.js"></script>
 </body>
 </html>

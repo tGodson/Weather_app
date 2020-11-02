@@ -6,7 +6,6 @@
 
 body {
     font-family: 'montserrat', sans-serif;
-    background-image: url('./img/bg.jpg');
     background-size: cover;
     background-position: top center;
 }
@@ -86,9 +85,14 @@ main {
   text-shadow: 0px 3px rgba(0, 0, 0, 0.4);
 }
 
-.current .hi-low {
+.current .hi-low button {
   color:#fff;
+  background-color: #DF8E00;
   font-weight: 500;
   font-size: 24px;
+  padding: 5px;
   text-shadow: 0px 4px rgba(0, 0, 0, 0.4);
+  border: none;
+  border-bottom: 3px solid rgba(255, 255, 255, 0.3);
+  border-radius: 16px 0px 16px 0px;
 }
