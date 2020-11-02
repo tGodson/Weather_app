@@ -4,13 +4,18 @@ const api = {
 }
 
 let temp = document.querySelector('.current .temp');
-
-
 document.body.style.backgroundImage = "url('./img/cloud.jpeg')";
 localStorage.setItem('temp', JSON.stringify(23));
 
 const searchbox = document.querySelector('.search-box');
 searchbox.addEventListener('keypress', setQuery);
+
+let city = document.querySelector('.location .city');
+let date = document.querySelector('.location .date');
+let weather_el = document.querySelector('.current .weather');
+let fahrenheitBtn = document.querySelector('.current .hi-low .fahrenheit');
+let celsiusBtn = document.querySelector('.current .hi-low .celsius');
+let errorMsg = document.querySelector('.error');
 
 function setQuery(evt) {
   if (evt.keyCode == 13) {
@@ -22,21 +27,21 @@ function getResults (query) {
   fetch(`${api.base}weather?q=${query}&units=metric&APPID=${api.key}`)
     .then(weather => {
       return weather.json();
-    }).then(displayResults);
+    }).then(displayResults)
+    .catch(function(err) {
+      errorMsg.innerHTML = "Please make sure your spelling above is correct!";
+    });
 }
 
 function displayResults (weather) {
-  let city = document.querySelector('.location .city');
   city.innerText = `${weather.name}, ${weather.sys.country}`;
 
   let now = new Date();
-  let date = document.querySelector('.location .date');
   date.innerText = dateBuilder(now);
 
   temp.innerHTML = `${Math.round(weather.main.temp)}<span>°c</span>`;
   localStorage.setItem('temp', JSON.stringify(weather.main.temp));
 
-  let weather_el = document.querySelector('.current .weather');
   weather_el.innerText = weather.weather[0].main;
 
   if (weather.weather[0].main === "Clear"){
@@ -63,7 +68,7 @@ function dateBuilder (d) {
   return `${day} ${date} ${month} ${year}`;
 }
 
-let fahrenheitBtn = document.querySelector('.current .hi-low .fahrenheit');
+
 const fahrenheit = () => {
   let temperature = JSON.parse(localStorage.getItem('temp'));
   let temp_fahrenheit = (temperature * 1.8) + 32;
@@ -71,7 +76,6 @@ const fahrenheit = () => {
 }
 fahrenheitBtn.addEventListener('click', fahrenheit);
 
-let celsiusBtn = document.querySelector('.current .hi-low .celsius');
 const celsius = () => {
   let temperature = JSON.parse(localStorage.getItem('temp'));
   temp.innerHTML = `${Math.round(temperature)}<span>°C</span>`;
