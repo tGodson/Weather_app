@@ -8,7 +8,6 @@ document.body.style.backgroundImage = "url('./img/cloud.jpeg')";
 localStorage.setItem('temp', JSON.stringify(23));
 
 const searchbox = document.querySelector('.search-box');
-searchbox.addEventListener('keypress', setQuery);
 
 let city = document.querySelector('.location .city');
 let date = document.querySelector('.location .date');
@@ -17,13 +16,14 @@ let fahrenheitBtn = document.querySelector('.current .hi-low .fahrenheit');
 let celsiusBtn = document.querySelector('.current .hi-low .celsius');
 let errorMsg = document.querySelector('.error');
 
-function setQuery(evt) {
+const setQuery = (evt) => {
   if (evt.keyCode == 13) {
     getResults(searchbox.value);
   }
 }
+searchbox.addEventListener('keypress', setQuery);
 
-function getResults (query) {
+const getResults = (query) => {
   fetch(`${api.base}weather?q=${query}&units=metric&APPID=${api.key}`)
     .then(weather => {
       return weather.json();
@@ -33,7 +33,7 @@ function getResults (query) {
     });
 }
 
-function displayResults (weather) {
+const displayResults = (weather) => {
   city.innerText = `${weather.name}, ${weather.sys.country}`;
 
   let now = new Date();
@@ -56,7 +56,7 @@ function displayResults (weather) {
 
 }
 
-function dateBuilder (d) {
+const dateBuilder = (d) => {
   let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
   let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
