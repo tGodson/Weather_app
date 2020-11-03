@@ -1,4 +1,3 @@
-// import { setQuery, getResults } from "./logic";
 import './style.css';
 import Clear from './img/clear.jpg';
 import Rain from './img/rain.jpeg';
@@ -86,5 +85,3 @@ const celsius = () => {
   temp.innerHTML = `${Math.round(temperature)}<span>°C</span>`;
 };
 celsiusBtn.addEventListener('click', celsius);
-
-// export { searchbox, displayResults, errorMsg };
